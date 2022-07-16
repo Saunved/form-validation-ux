@@ -13,6 +13,7 @@ const Input = ({
     <div>
       <label htmlFor={name}>{label}</label>
       <input
+        id={name}
         onChange={onInputChange}
         onBlur={onInputBlur}
         name={name}
