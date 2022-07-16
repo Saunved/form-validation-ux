@@ -1,34 +1,47 @@
+import { useState } from "react";
+import PageHeader from "./PageHeader";
+import Form from "./Form";
+import { baseForm } from "../constants/initialForm";
+import { UI_STRINGS } from "../constants/appStrings";
+import { updateFormField } from "../helpers/form";
+import { FORM_SUBMIT_MOCK_WAIT } from "../constants/timeouts";
+const { SUBMIT, LOADING, NO_VALIDATION_TITLE, NO_VALIDATION_SUBTITLE } =
+  UI_STRINGS;
+
 const NoValidationForm = () => {
+  const [formFields, setFormFields] = useState(baseForm);
+  const [submitText, setSubmitText] = useState(SUBMIT);
+
+  /**
+   * Notice how this event handler has ZERO validation!
+   */
+  const onSubmitClick = () => {
+    setSubmitText(LOADING);
+
+    setTimeout(() => {
+      setSubmitText(SUBMIT);
+    }, FORM_SUBMIT_MOCK_WAIT);
+  };
+
+  const onInputChange = (e) => {
+    const { name, value } = e.target;
+    const updatedForm = updateFormField(formFields, name, value);
+    setFormFields(updatedForm);
+  };
+
   return (
     <div>
-      <h1 className="text-xl font-bold">Form with no validation</h1>
-      <p>
-        No validation is the worst form of validation. If your users don't know
-        what went wrong, how will they fix it?
-      </p>
+      <PageHeader
+        title={NO_VALIDATION_TITLE}
+        subtitle={NO_VALIDATION_SUBTITLE}
+      />
 
-      <div className="flex justify-center">
-        <form className="shadow-lg p-8 border rounded mt-4">
-          <div>
-            <label htmlFor="name">Name</label>
-            <input name="name" type="text" />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="email">Email</label>
-            <input name="email" type="text" />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="password">Password</label>
-            <input name="password" type="password" />
-          </div>
-
-          <div className="flex justify-center">
-            <button className="shadow hover:shadow-none bg-blue-600 text-white px-4 py-2 rounded text-sm">
-              Submit
-            </button>
-          </div>
-        </form>
-      </div>
+      <Form
+        onInputChange={onInputChange}
+        onSubmitClick={onSubmitClick}
+        fields={formFields}
+        submitText={submitText}
+      />
     </div>
   );
 };
