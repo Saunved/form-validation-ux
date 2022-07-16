@@ -1,7 +1,7 @@
 import Input from "./Input";
 
 const DEFAULT_SUBMIT_CLASSES =
-  "shadow hover:shadow-none bg-blue-600 text-white px-4 py-2 rounded text-sm";
+  "shadow hover:shadow-none bg-blue-600 text-white px-4 py-2 rounded text-sm mt-2";
 
 const getSubmitButtonClasses = (classesFromProps) => {
   if (!classesFromProps) {
@@ -24,7 +24,7 @@ const Form = ({
   return (
     <div className="flex justify-center">
       <form
-        className="shadow-lg p-8 border rounded mt-4"
+        className="shadow-lg p-8 border rounded mt-4 w-96"
         onSubmit={(e) => e.preventDefault()}
       >
         {fields.map((field) => {
