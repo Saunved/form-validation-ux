@@ -19,4 +19,7 @@ export const UI_STRINGS = {
   FIELD_VALIDATION_TITLE: "Forms with field-level validation",
   FIELD_VALIDATION_SUBTITLE:
     "These forms trigger a validation on the field when the user moves away from the field",
+  FIELD_EAGER_VALIDATION_TITLE: "Form with field-level + eager validation",
+  FIELD_EAGER_VALIDATION_SUBTITLE:
+    "We perform eager validation if a field is erroneous and the user starts typing",
 };
