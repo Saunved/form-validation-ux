@@ -28,7 +28,7 @@ const NoValidationForm = () => {
   };
 
   /**
-   * Notice how this event handler has some validation
+   * We should also validate on submit
    */
   const onSubmitClick = () => {
     setSubmitText(LOADING);

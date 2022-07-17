@@ -23,7 +23,7 @@ const NoValidationForm = () => {
   };
 
   /**
-   * Notice how this event handler has some validation
+   * We validate on submit as a final catch-all
    */
   const onSubmitClick = () => {
     setSubmitText(LOADING);
@@ -34,6 +34,9 @@ const NoValidationForm = () => {
     }, FORM_SUBMIT_MOCK_WAIT);
   };
 
+  /**
+   *  We validate whenever the user types anything
+   */
   const onInputChange = (e) => {
     const { name, value } = e.target;
     const fieldIndex = formFields.findIndex((f) => f.name === name);

@@ -13,7 +13,7 @@ const NoValidationForm = () => {
   const [submitText, setSubmitText] = useState(SUBMIT);
 
   /**
-   * Notice how this event handler has some validation
+   * We only validate on submit
    */
   const onSubmitClick = () => {
     setSubmitText(LOADING);

@@ -27,7 +27,7 @@ const NoValidationForm = () => {
   };
 
   /**
-   * Notice how this event handler has some validation
+   * We validate on submit as a final catch-all
    */
   const onSubmitClick = () => {
     setSubmitText(LOADING);
@@ -38,6 +38,7 @@ const NoValidationForm = () => {
     }, FORM_SUBMIT_MOCK_WAIT);
   };
 
+  // We validate each field on inputChange IF it is dirty
   const onInputChange = (e) => {
     const { name, value } = e.target;
     const updatedForm = updateFormField(formFields, name, value);
@@ -48,6 +49,7 @@ const NoValidationForm = () => {
   const validateField = (name, value) => {
     const fieldIndex = formFields.findIndex((f) => f.name === name);
 
+    // Checking if the field was erroneous
     if (formFields[fieldIndex].validationMessage) {
       let updatedForm = updateFormField(formFields, name, value);
       const validationMessages = updatedForm[fieldIndex].validate();
@@ -60,6 +62,7 @@ const NoValidationForm = () => {
     }
   };
 
+  // We are validating on blur
   const onInputBlur = (e) => {
     const { name, value } = e.target;
     const fieldIndex = formFields.findIndex((f) => f.name === name);

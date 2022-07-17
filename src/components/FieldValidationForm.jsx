@@ -40,6 +40,7 @@ const NoValidationForm = () => {
     setFormFields(updatedForm);
   };
 
+  // We are validating on blur instead of onChange
   const onInputBlur = (e) => {
     const { name, value } = e.target;
     const fieldIndex = formFields.findIndex((f) => f.name === name);
